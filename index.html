@@ -1,40 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Data Engineer Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data Engineer Portfolio">
+    <title>My Data Engineering Portfolio</title>
+    
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; margin: 0; padding: 0; }
-        h1 { color: #4CAF50; text-align: center; padding: 20px 0; }
-        p { text-align: center; }
-        .container { width: 80%; margin: auto; overflow: hidden; }
-        #about { padding: 20px; background: #ddd; }
-        #projects { padding: 20px; background: #fff; }
-        .project { margin: 20px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
-        a { color: #4CAF50; text-decoration: none; }
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        header h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInText 2s ease-out 1.5s forwards;
+        }
+
+        /* About Me Section */
+        #about {
+            padding: 50px 10%;
+            background-color: #fff;
+            text-align: center;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 50px 10%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .project-card {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        /* Skills Section */
+        #skills {
+            padding: 50px 10%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .skill {
+            display: inline-block;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: white;
+            margin: 10px;
+            opacity: 0;
+            animation: fadeInSkill 2s ease-out forwards;
+        }
+
+        .skill:nth-child(1) { animation-delay: 0s; }
+        .skill:nth-child(2) { animation-delay: 0.2s; }
+        .skill:nth-child(3) { animation-delay: 0.4s; }
+        .skill:nth-child(4) { animation-delay: 0.6s; }
+        
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInSkill {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to My Data Engineering Portfolio!</h1>
-    <div id="about" class="container">
-        <h2>About Me</h2>
-        <p>Hi! I'm an aspiring Data Engineer passionate about data pipelines, ETL processes, and big data systems.</p>
-    </div>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>I’m an aspiring Data Engineer. Let me show you my work!</p>
+    </header>
 
-    <div id="projects" class="container">
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I specialize in building data pipelines, managing big data, and optimizing data systems for performance.</p>
+    </section>
+
+    <section id="projects">
         <h2>My Projects</h2>
-        <div class="project">
-            <h3>Project 1: ETL Pipeline with Python</h3>
-            <p>Built an ETL pipeline to extract data from an API, clean it, and load it into a PostgreSQL database.</p>
+        <div class="project-card">
+            <h3>ETL Pipeline with Python</h3>
+            <p>Built a robust ETL pipeline to automate data extraction, transformation, and loading from APIs into PostgreSQL.</p>
             <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
         </div>
-        <div class="project">
-            <h3>Project 2: Data Warehouse Design</h3>
-            <p>Designed a data warehouse schema and ingested data into Amazon Redshift for analysis.</p>
+        <div class="project-card">
+            <h3>Data Warehouse with Redshift</h3>
+            <p>Designed and implemented a scalable data warehouse schema for analytics and business intelligence using AWS Redshift.</p>
             <a href="https://github.com/yourusername/project2" target="_blank">View on GitHub</a>
         </div>
-    </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill">Python</div>
+        <div class="skill">SQL</div>
+        <div class="skill">AWS</div>
+        <div class="skill">Apache Spark</div>
+    </section>
 
     <footer>
         <p>Contact me on <a href="https://www.linkedin.com/in/yourusername" target="_blank">LinkedIn</a> | <a href="mailto:your.email@example.com">Email</a></p>
