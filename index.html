@@ -1,248 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Abhilash K - Data Engineer Portfolio">
-    <title>Abhilash K | Data Engineer Portfolio</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Abhilash K - Data Engineer Portfolio</title>
 
-    <!-- External Libraries -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    
     <style>
-        /* General Styles */
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
             color: #333;
             overflow-x: hidden;
         }
 
-        /* Header Section */
-        header {
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-image: url('https://source.unsplash.com/1600x900/?technology');
             height: 100vh;
-            background: linear-gradient(45deg, #4CAF50, #8BC34A);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            animation: fadeIn 2s ease-out;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
         }
 
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            animation: slideIn 1.5s ease-out;
-        }
-
-        header p {
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInText 2s ease-out 1.5s forwards;
-        }
-
-        /* Section Titles */
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #4CAF50;
+        .header {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            color: #fff;
             text-align: center;
         }
 
-        /* About Me Section */
-        #about {
-            padding: 50px 10%;
+        .header h1 {
+            font-size: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .skills,
+        .projects {
             background-color: #fff;
-            text-align: center;
-            animation: slideUp 1s ease-out;
         }
 
-        /* Experience Section */
-        #experience {
-            background-color: #f9f9f9;
-            padding: 50px 10%;
-            animation: slideUp 1s ease-out;
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
-        .company-logo {
-            height: 50px;
-            margin: 0 15px;
-            transition: transform 0.3s;
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 30px;
+            transition: all 0.3s ease-in-out;
         }
 
-        .company-logo:hover {
-            transform: scale(1.2);
+        .card:hover {
+            transform: scale(1.05);
         }
 
-        .job-role {
-            margin: 15px 0;
-            font-size: 1.2em;
-            color: #4CAF50;
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
-        .company-details {
-            font-size: 1.1em;
+        .card h3 {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .card p {
+            margin-top: 10px;
             color: #555;
         }
 
-        /* Projects Section */
-        #projects {
-            padding: 50px 10%;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        .project-card {
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Skills Section */
-        #skills {
-            padding: 50px 10%;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        .skill {
-            display: inline-block;
-            background-color: #4CAF50;
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: white;
-            margin: 10px;
-            opacity: 0;
-            animation: fadeInSkill 2s ease-out forwards;
-        }
-
-        .skill:nth-child(1) { animation-delay: 0s; }
-        .skill:nth-child(2) { animation-delay: 0.2s; }
-        .skill:nth-child(3) { animation-delay: 0.4s; }
-        .skill:nth-child(4) { animation-delay: 0.6s; }
-
-        /* Footer Section */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        footer a {
+        .button {
+            background-color: #007bff;
             color: #fff;
+            padding: 12px 24px;
             text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        .button:hover {
+            background-color: #0056b3;
         }
 
-        @keyframes slideIn {
-            0% { transform: translateY(-100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        /* Animation for Scroll */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease-in-out;
         }
 
-        @keyframes fadeInText {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        .scroll-animate.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes slideUp {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background-color: #4caf50;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
         }
 
-        @keyframes fadeInSkill {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Abhilash K</h1>
-        <p>Aspiring Data Engineer</p>
-    </header>
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
 
-    <section id="about">
-        <h2>Profile Summary</h2>
-        <p>Passionate about building scalable data pipelines and optimizing ETL processes. Proficient in SQL, Python, Apache Spark, and AWS. Experience in real-time data streaming and cloud workflows. Eager to design data-driven solutions for AI/ML applications.</p>
+    <!-- Header Section (Parallax) -->
+    <div class="parallax">
+        <div class="header" data-aos="fade-in">
+            <h1>Abhilash K</h1>
+            <p>Aspiring Data Engineer | Bengaluru, India</p>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <section class="profile" data-aos="fade-up">
+        <div class="section-title">Profile Summary</div>
+        <p class="scroll-animate">Aspiring Data Engineer passionate about building scalable data pipelines and optimizing ETL
+            processes. Proficient in SQL, Python, Apache Spark, and AWS, with experience in real-time data streaming and cloud
+            workflows. Eager to design data-driven solutions for AI/ML applications and business insights.</p>
     </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="company-logo">
-            <img src="amazon-logo.png" alt="Amazon" />
-        </div>
-        <div class="job-role">Amazon | Catalog Associate – Data Operations</div>
-        <div class="company-details">
-            <p>Oct 2023 – Present</p>
-            <p>• Automated ETL pipelines using Python, SQL, and AWS (S3, Athena, and Glue), increasing data processing efficiency by 20%.</p>
-            <p>• Designed SQL-based data validation scripts, improving data accuracy by 90%.</p>
-        </div>
-
-        <div class="company-logo">
-            <img src="sagacito-logo.png" alt="Sagacito Technologies" />
-        </div>
-        <div class="job-role">Sagacito Technologies | Data Research Intern</div>
-        <div class="company-details">
-            <p>Jul 2023 – Oct 2023</p>
-            <p>• Automated data collection processes using Python, reducing manual effort in newspaper ad tracking by 50%.</p>
+    <!-- Technical Skills Section -->
+    <section class="skills" data-aos="fade-up">
+        <div class="section-title">Technical Skills</div>
+        <div class="scroll-animate">
+            <ul>
+                <li>Databases: SQL (MySQL, PostgreSQL, MS SQL Server), NoSQL (MongoDB)</li>
+                <li>Big Data & Cloud: Apache Spark, AWS (S3, Athena, Redshift, Glue, EC2), Azure (Synapse, Data Factory, Databricks), GCP</li>
+                <li>Programming: Python, R, JavaScript, C++</li>
+                <li>Data Visualization: Tableau, Power BI</li>
+                <li>ETL & Workflow Automation: Data Pipeline Development, SQL Optimization, Batch & Streaming Processing</li>
+            </ul>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-card">
+    <!-- Experience Section -->
+    <section class="experience" data-aos="fade-up">
+        <div class="section-title">Experience</div>
+        <div class="scroll-animate">
+            <p><strong>Amazon | Catalog Associate – Data Operations</strong><br> Oct 2023 – Present<br>
+                Automated ETL pipelines using Python, SQL, and AWS (S3, Athena, and Glue), increasing data processing efficiency
+                by 20% and saving 1.5 FTE hours/day.</p>
+            <p><strong>Sagacito Technologies | Data Research Intern</strong><br> Jul 2023 – Oct 2023<br>
+                Automated data collection processes using Python, reducing manual effort in newspaper ad tracking by 50%.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" data-aos="fade-up">
+        <div class="section-title">Projects</div>
+        <div class="card scroll-animate">
+            <img src="https://via.placeholder.com/300" alt="Project 1">
             <h3>FIFA World Cup Data Pipeline with Azure</h3>
-            <p>Built an end-to-end data pipeline using Azure Data Factory, Databricks, and Synapse Analytics.</p>
-            <a href="https://github.com/yourusername/fifa-pipeline" target="_blank">View on GitHub</a>
+            <p>Built an end-to-end data pipeline using Azure Data Factory, Databricks, and Synapse Analytics. Optimized Apache Spark jobs for data transformation.</p>
+            <a href="https://github.com/yourusername" class="button">View Project</a>
         </div>
-        <div class="project-card">
+        <div class="card scroll-animate">
+            <img src="https://via.placeholder.com/300" alt="Project 2">
             <h3>Real-Time Stock Market Data Pipeline</h3>
-            <p>Built a real-time streaming pipeline using Kafka, AWS, and Python.</p>
-            <a href="https://github.com/yourusername/stock-pipeline" target="_blank">View on GitHub</a>
+            <p>Built a real-time streaming pipeline using Apache Kafka, AWS (S3, Athena, Glue), and Python for stock market data analysis.</p>
+            <a href="https://github.com/yourusername" class="button">View Project</a>
         </div>
     </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skill">Python</div>
-        <div class="skill">SQL</div>
-        <div class="skill">Apache Spark</div>
-        <div class="skill">AWS</div>
+    <!-- Footer Section -->
+    <section class="footer" data-aos="fade-up">
+        <div class="section-title">Contact</div>
+        <p>Email: <a href="mailto:abhilash.krishnappa97@gmail.com">abhilash.krishnappa97@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
     </section>
 
-    <footer>
-        <p>Contact me on <a href="https://www.linkedin.com/in/yourusername" target="_blank">LinkedIn</a> | <a href="mailto:abhilash.krishnappa97@gmail.com">Email</a></p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS Library Initialization -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
+        // Initialize AOS
         AOS.init();
+
+        // Scroll Animation Logic
+        const elements = document.querySelectorAll('.scroll-animate');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const callback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        };
+        const observer = new IntersectionObserver(callback, options);
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Progress Bar Logic
+        window.onscroll = function () {
+            let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let scrollPosition = window.scrollY;
+            let progress = (scrollPosition / scrollHeight) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        };
     </script>
 </body>
+
 </html>
