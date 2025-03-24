@@ -18,90 +18,161 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        :root {
-            /* Color Scheme */
-            --primary: #0a192f;
-            --secondary: #112240;
-            --accent: #64ffda;
-            --text: #ccd6f6;
-            --text-secondary: #8892b0;
-            --gradient-1: linear-gradient(90deg, #64ffda, #0a66c2);
-            --gradient-2: linear-gradient(45deg, #0a192f, #112240);
-            
-            /* Typography */
-            --font-heading: 'Poppins', sans-serif;
-            --font-body: 'Inter', sans-serif;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-body);
-            background-color: var(--primary);
-            color: var(--text);
-            line-height: 1.7;
+        /* Ensure no horizontal scrolling */
+        html, body {
+            width: 100%;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            line-height: 1.2;
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--accent);
-            transition: all 0.3s ease;
-        }
-        
-        a:hover {
-            opacity: 0.8;
-        }
-        
+
+        /* Container settings */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            box-sizing: border-box;
             padding: 0 20px;
+            margin: 0 auto;
         }
 
-        /* Common Components */
-        .btn {
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: inline-flex;
+        /* Section styling */
+        .section-padding {
+            padding: 100px 0;
+            margin: 0 auto;
+        }
+
+        /* Prevent images from stretching layout */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Project section grid layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        /* Project card styling */
+        .project-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--secondary);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        /* Add shadow hover effect */
+        .project-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Project image with hover zoom */
+        .project-image {
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        /* Overlay styling */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-            border: 2px solid var(--accent);
+
+        /* Hover effects for overlay and image */
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: scale(1);
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
         }
-        
-        .btn-outline {
-            border: 2px solid var(--accent);
+
+        /* Project info styling */
+        .project-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Project title and description styling */
+        .project-info h3 {
             color: var(--accent);
-            background: transparent;
+            margin-bottom: 10px;
+            font-size: 20px;
         }
-        
-        .btn-outline:hover {
+
+        .project-info p {
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        /* Tech stack styling */
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .project-tech span {
             background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
+            color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
         }
+
+        /* Links styling */
+        .project-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .project-links a {
+            color: var(--text);
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover color for links */
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 500px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-info h3 {
+                font-size: 18px;
+            }
+
+            .project-info p {
+                font-size: 14px;
+            }
+        }
+    </style>
 
         /* Navbar Styles */
         .navbar {
