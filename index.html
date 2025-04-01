@@ -18,161 +18,90 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* Ensure no horizontal scrolling */
-        html, body {
-            width: 100%;
+        :root {
+            /* Color Scheme */
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #64ffda;
+            --text: #ccd6f6;
+            --text-secondary: #8892b0;
+            --gradient-1: linear-gradient(90deg, #64ffda, #0a66c2);
+            --gradient-2: linear-gradient(45deg, #0a192f, #112240);
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
             overflow-x: hidden;
         }
-
-        /* Container settings */
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
         .container {
-            max-width: 100%;
-            box-sizing: border-box;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 20px;
-            margin: 0 auto;
         }
 
-        /* Section styling */
-        .section-padding {
-            padding: 100px 0;
-            margin: 0 auto;
-        }
-
-        /* Prevent images from stretching layout */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Project section grid layout */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        /* Project card styling */
-        .project-card {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            background: var(--secondary);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        /* Add shadow hover effect */
-        .project-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Project image with hover zoom */
-        .project-image {
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.4s ease-in-out;
-        }
-
-        /* Overlay styling */
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 25, 47, 0.95);
-            display: flex;
+        /* Common Components */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-        }
-
-        /* Hover effects for overlay and image */
-        .project-card:hover .project-overlay {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        /* Project info styling */
-        .project-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Project title and description styling */
-        .project-info h3 {
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-
-        .project-info p {
-            color: var(--text);
-            margin-bottom: 15px;
-        }
-
-        /* Tech stack styling */
-        .project-tech {
-            display: flex;
             gap: 10px;
-            justify-content: center;
-            margin-bottom: 15px;
         }
-
-        .project-tech span {
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
             background: rgba(100, 255, 218, 0.1);
-            color: var(--accent);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
+            transform: translateY(-3px);
         }
-
-        /* Links styling */
-        .project-links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .project-links a {
-            color: var(--text);
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-
-        /* Hover color for links */
-        .project-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 500px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .project-info h3 {
-                font-size: 18px;
-            }
-
-            .project-info p {
-                font-size: 14px;
-            }
-        }
-    </style>
 
         /* Navbar Styles */
         .navbar {
@@ -324,7 +253,19 @@
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
-            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/400" alt="Abhilash">
+                </div>
+            </div>
+        </div>
+        <div class="floating-icons">
+            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:abhilash.krishnappa97@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
     <style>
         /* Hero Section Styles */
         .hero {
@@ -622,7 +563,15 @@
                     </div>
                 </div>
                 
-        
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="https://via.placeholder.com/400" alt="Abhilash - Data Engineer">
+                        <div class="image-effect"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Experience Section -->
     <section id="experience" class="section-padding">
@@ -1031,11 +980,11 @@
             <div class="project-card">
                 <a href="https://github.com/ak-abhilash/Dagster-cloud-project?tab=readme-ov-file" target="_blank">
                     <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/ak-abhilash/Dagster-cloud-project/refs/heads/main/screenshots/Screenshot%202025-01-19%20155117.png" alt="Dagster Cloud Project">
+                        <img src="https://private-user-images.githubusercontent.com/64023659/404677716-d09e82d8-a241-4017-a67e-5248b4cd2efe.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI3OTAxNzAsIm5iZiI6MTc0Mjc4OTg3MCwicGF0aCI6Ii82NDAyMzY1OS80MDQ2Nzc3MTYtZDA5ZTgyZDgtYTI0MS00MDE3LWE2N2UtNTI0OGI0Y2QyZWZlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzI0VDA0MTc1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgyNmIxZjk0MTkzM2JmMDEzMWFlMTY2Mjg0NmEwMjQ4YmM2YThiYzM5YmFlNzQxMzNmZWQzYzQ3YzQ5NTY3YmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.9WoUcOCUXqBHG1jexqy53HlvDhRhnn_2keHdrBwZxzU" alt="Data Quality Framework">
                         <div class="project-overlay">
                             <div class="project-info">
-                                <h3>Dagster Cloud Project</h3>
-                                <p>Automated data processing using Dagster and DuckDB</p>
+                                <h3>Data Quality Framework</h3>
+                                <p>Automated data quality monitoring and alerting system</p>
                                 <div class="project-tech">
                                     <span>Python</span>
                                     <span>dbt</span>
