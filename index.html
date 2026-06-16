@@ -484,6 +484,75 @@
 
     /* Divider line */
     .divider { width: 40px; height: 2px; background: var(--orange); margin-bottom: 40px; }
+
+    /* ─── GROUPED COMPANY (LinkedIn style) ─── */
+    .exp-item-grouped {
+      display: grid; grid-template-columns: 190px 1fr;
+      gap: 40px; position: relative; margin-bottom: 0;
+    }
+    .exp-item-grouped::before {
+      content: ''; position: absolute;
+      left: 189px; top: 26px; bottom: -2px;
+      width: 1px; background: var(--border2);
+    }
+    .exp-item-grouped:last-child::before { display: none; }
+
+    /* The left meta column spans all the stacked roles */
+    .exp-meta-grouped { padding-top: 6px; }
+    .exp-meta-grouped .exp-period {
+      font-family: var(--font-mono); font-size: 10px; color: var(--white3); margin-bottom: 6px;
+    }
+    .exp-meta-grouped .exp-company-logo {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 6px;
+    }
+    .exp-meta-grouped .exp-company-logo img {
+      height: 22px; max-width: 80px; object-fit: contain;
+      filter: brightness(0) invert(0.6);
+    }
+    .exp-meta-grouped .exp-company-text {
+      font-size: 13px; font-weight: 600; color: var(--white2);
+    }
+
+    /* Stacked role cards inside one company */
+    .exp-roles { display: flex; flex-direction: column; gap: 0; }
+
+    /* Connector line between stacked role cards */
+    .exp-card-grouped {
+      background: var(--black3); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 26px 30px;
+      position: relative; transition: border-color 0.25s;
+      margin-bottom: 12px;
+    }
+    .exp-card-grouped:last-child { margin-bottom: 20px; }
+    .exp-card-grouped:hover { border-color: var(--orange-border); }
+    .exp-card-grouped::before {
+      content: ''; position: absolute; left: -22px; top: 20px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange); border: 2px solid var(--black2);
+      box-shadow: 0 0 10px rgba(249,115,22,0.4);
+    }
+    /* Vertical connector between role dots */
+    .exp-card-grouped:not(:last-child)::after {
+      content: ''; position: absolute;
+      left: -18px; top: 28px; bottom: -12px;
+      width: 1px; background: var(--orange-border);
+    }
+
+    .exp-card-grouped .exp-role {
+      font-family: var(--font-head); font-size: 17px; font-weight: 700; margin-bottom: 2px;
+    }
+    .exp-card-grouped .exp-period-inline {
+      font-family: var(--font-mono); font-size: 10px; color: var(--white3); margin-bottom: 4px;
+    }
+    .exp-card-grouped .exp-subtitle {
+      font-family: var(--font-mono); font-size: 11px; color: var(--orange); margin-bottom: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .exp-item-grouped { grid-template-columns: 1fr; gap: 0; }
+      .exp-item-grouped::before { display: none; }
+      .exp-card-grouped::before, .exp-card-grouped::after { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -628,22 +697,25 @@
     <h2 class="section-title">Work History</h2>
     <div class="timeline">
 
-      <!-- Zageno SDE II -->
-      <div class="exp-item fade-in">
-        <div class="exp-meta">
-          <div class="exp-period">Feb 2026 – Present</div>
+      <!-- Zageno – grouped (LinkedIn style) -->
+      <div class="exp-item-grouped fade-in">
+        <div class="exp-meta-grouped">
+          <div class="exp-period">Aug 2025 – Present</div>
           <div class="exp-company-logo">
             <img src="https://go.zageno.com/hubfs/Brand/ZAGENO%20logos/Zageno%20logo%20blue.svg" alt="Zageno" onerror="this.style.display='none'" />
             <span class="exp-company-text">Zageno</span>
           </div>
           <span style="font-size:10px;font-family:var(--font-mono);color:var(--white3);">Bengaluru, India</span>
         </div>
-        <div>
-          <div class="exp-card">
+        <div class="exp-roles">
+
+          <!-- Role 1: SDE II -->
+          <div class="exp-card-grouped">
             <div class="exp-role">
               Software Development Engineer II – Data
               <span class="exp-badge">↑ Promoted</span>
             </div>
+            <div class="exp-period-inline">Feb 2026 – Present</div>
             <div class="exp-subtitle">Full-Time · Data Platform Architecture</div>
             <ul class="exp-points">
               <li>Architected event-driven data platform using <strong>Databricks Delta Lake + Apache Kafka</strong> with bidirectional topic communication, maintaining <strong>99.95% message delivery success rate</strong> across all catalog ingestion and update workflows.</li>
@@ -655,22 +727,11 @@
               <span class="tag">Databricks</span><span class="tag">Delta Lake</span><span class="tag">Apache Kafka</span><span class="tag">Grafana</span><span class="tag">Prometheus</span><span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">Unity Catalog</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Zageno SDE I -->
-      <div class="exp-item fade-in">
-        <div class="exp-meta">
-          <div class="exp-period">Aug 2025 – Feb 2026</div>
-          <div class="exp-company-logo">
-            <img src="https://go.zageno.com/hubfs/Brand/ZAGENO%20logos/Zageno%20logo%20blue.svg" alt="Zageno" onerror="this.style.display='none'" />
-            <span class="exp-company-text">Zageno</span>
-          </div>
-          <span style="font-size:10px;font-family:var(--font-mono);color:var(--white3);">Bengaluru, India</span>
-        </div>
-        <div>
-          <div class="exp-card">
+          <!-- Role 2: SDE I -->
+          <div class="exp-card-grouped">
             <div class="exp-role">Software Development Engineer I – Data</div>
+            <div class="exp-period-inline">Aug 2025 – Feb 2026</div>
             <div class="exp-subtitle">Full-Time · ETL Pipelines & ML Infrastructure</div>
             <ul class="exp-points">
               <li>Built end-to-end ETL pipelines on <strong>Databricks (PySpark, Delta Lake)</strong> processing <strong>80M+ SKUs</strong> through multi-stage ingestion, transformation, matching, and Confluent Kafka outbound with JSON Schema Registry; designed configurable upsert pipeline with fuzzy matching, composite key resolution, and Delta Lake MERGE operations.</li>
@@ -681,6 +742,7 @@
               <span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Confluent Kafka</span><span class="tag">FastAPI</span><span class="tag">DBT</span><span class="tag">Python</span><span class="tag">S3</span>
             </div>
           </div>
+
         </div>
       </div>
 
